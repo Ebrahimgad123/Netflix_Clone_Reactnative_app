@@ -1,50 +1,140 @@
-# Welcome to your Expo app 👋
+📱 Netflix Clone React Native App (Expo)
+A mobile application built with React Native and Expo, allowing users to browse, search, and save movies via a third-party movie API. The app uses file-based routing, Redux Toolkit for state management, and NativeWind (Tailwind CSS) for styling.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+🧱 Project Structure
+bash
+Copy
+Edit
+.
+├── app/                       # File-based routing (each file = screen)
+│   ├── (app)/                # Main screens
+│   │   ├── index.tsx         # Home screen (movie list)
+│   │   ├── profile.tsx       # User profile
+│   │   ├── saved.tsx         # Saved movies
+│   │   ├── search.tsx        # Search screen
+│   │   └── _layout.tsx       # App layout
+│   ├── movies/[id].tsx       # Movie detail screen
+│   ├── _layout.tsx           # Root layout
+│   └── global.css            # Global styles
+│
+├── compoonent/               # Reusable UI components
+│   ├── FlatListComponent.tsx
+│   ├── HorizontalFlatList.tsx
+│   └── SearchBoxComponent.tsx
+│
+├── store/                    # Redux store
+│   ├── index.ts              # Store setup
+│   └── savedMoviesSlice.ts   # Slice for saved movies
+│
+├── services/                 # API & data fetching
+│   ├── api.ts                # API client
+│   └── useFetch.ts           # Custom data-fetching hook
+│
+├── constants/                # Static references
+│   ├── icons.ts
+│   └── images.ts
+│
+├── interfaces/               # TypeScript interfaces
+│   └── interfaces.d.ts
+│
+├── assets/                   # Fonts, icons, images
+│   ├── fonts/
+│   ├── icons/
+│   └── images/
+│
+├── android/                  # Expo-managed native Android project
+│
+├── .env                      # API keys and environment variables
+├── metro.config.js           # Metro bundler config
+├── babel.config.js           # Babel config
+├── tsconfig.json             # TypeScript config
+├── tailwind.config.js        # Tailwind / NativeWind config
+└── nativewind-env.d.ts       # NativeWind typings
+⚙️ Key Technologies
+Purpose	Library / Tool
+UI Framework	React Native + Expo
+Navigation & Routing	Expo Router (file-based)
+State Management	Redux Toolkit
+Styling	NativeWind (Tailwind CSS)
+API Communication	Axios in services/api.ts
+Data Fetching	Custom hook useFetch.ts
+Type Safety	TypeScript
+Development Bundler	Metro (Expo default)
 
-## Get started
+🧠 Architecture Overview
+🔄 Unidirectional Data Flow
+User taps a component in a screen.
 
-1. Install dependencies
+Component dispatches an action to Redux.
 
-   ```bash
-   npm install
-   ```
+Redux slice or useFetch hook calls API via api.ts.
 
-2. Start the app
+API returns data → Redux updates state.
 
-   ```bash
-   npx expo start
-   ```
+UI re-renders with new state.
 
-In the output, you'll find options to open the app in a
+🗺️ Routing
+Each .tsx file under app/(app)/ becomes a screen.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Layouts like _layout.tsx provide shared UI structure.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Dynamic route [id].tsx is used for individual movie details.
 
-## Get a fresh project
+📡 External Services
+The app fetches movie data from a third-party API (key stored in .env).
 
-When you're ready, run:
+No backend — all logic is on the client side.
 
-```bash
-npm run reset-project
-```
+🖼️ UI Components
+Component	Purpose
+FlatListComponent	Displays vertical list of movies
+HorizontalFlatList	Displays horizontal scrollable movie list
+SearchBoxComponent	Search input for movie titles
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+🧬 State Management
+store/index.ts: Initializes the Redux store.
 
-## Learn more
+savedMoviesSlice.ts: Manages the logic for saving/removing movies.
 
-To learn more about developing your project with Expo, look at the following resources:
+🔐 Secrets & Config
+.env: Stores the API key securely.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+metro.config.js, babel.config.js: Configure Metro bundler and Babel.
 
-## Join the community
+tsconfig.json: TypeScript setup.
 
-Join our community of developers creating universal apps.
+tailwind.config.js: Tailwind CSS setup for NativeWind.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+🛠️ Build & Runtime
+Expo Runtime bundles the JavaScript and handles hot reloading.
+
+The Android directory is managed automatically by Expo for native builds.
+
+Metro Bundler serves fonts, images, and code to the device.
+
+🔍 How to Run the App
+bash
+Copy
+Edit
+# 1. Install dependencies
+npm install
+
+# 2. Add API key
+Create a `.env` file and add:
+MOVIE_API_KEY=your_key_here
+
+# 3. Start the Expo development server
+npx expo start
+🔄 Suggested Improvements
+Add authentication (e.g., Firebase Auth).
+
+Add movie caching for offline support.
+
+Add rating or review features.
+
+📌 Notes
+All native code is handled by Expo.
+
+No backend server is included.
+
+The app is fully cross-platform (Android + iOS).

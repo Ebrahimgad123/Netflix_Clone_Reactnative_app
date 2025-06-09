@@ -1,140 +1,152 @@
-📱 Netflix Clone React Native App (Expo)
-A mobile application built with React Native and Expo, allowing users to browse, search, and save movies via a third-party movie API. The app uses file-based routing, Redux Toolkit for state management, and NativeWind (Tailwind CSS) for styling.
 
-🧱 Project Structure
-bash
-Copy
-Edit
+# 📱 Netflix Clone React Native App (Expo)
+
+A mobile app built with React Native and Expo to browse, search, and save movies using a third-party API.
+
+---
+
+## 🧱 Project Structure
+```bash
 .
-├── app/                       # File-based routing (each file = screen)
-│   ├── (app)/                # Main screens
-│   │   ├── index.tsx         # Home screen (movie list)
-│   │   ├── profile.tsx       # User profile
-│   │   ├── saved.tsx         # Saved movies
-│   │   ├── search.tsx        # Search screen
-│   │   └── _layout.tsx       # App layout
-│   ├── movies/[id].tsx       # Movie detail screen
-│   ├── _layout.tsx           # Root layout
-│   └── global.css            # Global styles
-│
-├── compoonent/               # Reusable UI components
+├── app/
+│   ├── (app)/
+│   │   ├── index.tsx          # Home screen
+│   │   ├── profile.tsx        # Profile screen
+│   │   ├── saved.tsx          # Saved movies
+│   │   ├── search.tsx         # Search screen
+│   │   └── _layout.tsx        # App layout
+│   ├── movies/[id].tsx        # Movie detail screen
+│   ├── _layout.tsx            # Root layout
+│   └── global.css
+├── compoonent/
 │   ├── FlatListComponent.tsx
 │   ├── HorizontalFlatList.tsx
 │   └── SearchBoxComponent.tsx
-│
-├── store/                    # Redux store
-│   ├── index.ts              # Store setup
-│   └── savedMoviesSlice.ts   # Slice for saved movies
-│
-├── services/                 # API & data fetching
-│   ├── api.ts                # API client
-│   └── useFetch.ts           # Custom data-fetching hook
-│
-├── constants/                # Static references
+├── store/
+│   ├── index.ts
+│   └── savedMoviesSlice.ts
+├── services/
+│   ├── api.ts
+│   └── useFetch.ts
+├── constants/
 │   ├── icons.ts
 │   └── images.ts
-│
-├── interfaces/               # TypeScript interfaces
+├── interfaces/
 │   └── interfaces.d.ts
-│
-├── assets/                   # Fonts, icons, images
+├── assets/
 │   ├── fonts/
 │   ├── icons/
 │   └── images/
-│
-├── android/                  # Expo-managed native Android project
-│
-├── .env                      # API keys and environment variables
-├── metro.config.js           # Metro bundler config
-├── babel.config.js           # Babel config
-├── tsconfig.json             # TypeScript config
-├── tailwind.config.js        # Tailwind / NativeWind config
-└── nativewind-env.d.ts       # NativeWind typings
-⚙️ Key Technologies
-Purpose	Library / Tool
-UI Framework	React Native + Expo
-Navigation & Routing	Expo Router (file-based)
-State Management	Redux Toolkit
-Styling	NativeWind (Tailwind CSS)
-API Communication	Axios in services/api.ts
-Data Fetching	Custom hook useFetch.ts
-Type Safety	TypeScript
-Development Bundler	Metro (Expo default)
+├── android/
+├── .env
+├── metro.config.js
+├── babel.config.js
+├── tsconfig.json
+├── tailwind.config.js
+└── nativewind-env.d.ts
+```
 
-🧠 Architecture Overview
-🔄 Unidirectional Data Flow
-User taps a component in a screen.
+---
 
-Component dispatches an action to Redux.
+## ⚙️ Key Technologies
 
-Redux slice or useFetch hook calls API via api.ts.
+| Purpose              | Tool                          |
+|----------------------|-------------------------------|
+| UI Framework         | React Native + Expo           |
+| Routing              | Expo Router (File-based)      |
+| State Management     | Redux Toolkit                 |
+| Styling              | NativeWind (Tailwind CSS)     |
+| API Requests         | Axios (`services/api.ts`)     |
+| Data Fetching        | `useFetch.ts` (Custom Hook)   |
+| Typing               | TypeScript                    |
+| Dev Server / Bundler | Metro (Expo Default)          |
 
-API returns data → Redux updates state.
+---
 
-UI re-renders with new state.
+## 🧠 Architecture Overview
 
-🗺️ Routing
-Each .tsx file under app/(app)/ becomes a screen.
+1. User interacts with UI components.
+2. Component dispatches Redux actions.
+3. Redux slices or hooks send API requests.
+4. Data is returned → Redux updates store.
+5. UI listens to state → re-renders.
 
-Layouts like _layout.tsx provide shared UI structure.
+---
 
-Dynamic route [id].tsx is used for individual movie details.
+## 🗺️ Routing
 
-📡 External Services
-The app fetches movie data from a third-party API (key stored in .env).
+- All `.tsx` files under `app/(app)/` are screens.
+- `_layout.tsx` provides shared layout structure.
+- `[id].tsx` handles dynamic routes (movie details).
 
-No backend — all logic is on the client side.
+---
 
-🖼️ UI Components
-Component	Purpose
-FlatListComponent	Displays vertical list of movies
-HorizontalFlatList	Displays horizontal scrollable movie list
-SearchBoxComponent	Search input for movie titles
+## 📡 External Services
 
-🧬 State Management
-store/index.ts: Initializes the Redux store.
+- Movie data comes from a third-party API.
+- API key stored securely in `.env`.
 
-savedMoviesSlice.ts: Manages the logic for saving/removing movies.
+---
 
-🔐 Secrets & Config
-.env: Stores the API key securely.
+## 🖼️ UI Components
 
-metro.config.js, babel.config.js: Configure Metro bundler and Babel.
+| Component             | Role                                  |
+|-----------------------|---------------------------------------|
+| FlatListComponent     | Vertical movie list                   |
+| HorizontalFlatList    | Horizontal scrollable list            |
+| SearchBoxComponent    | Input for movie title search          |
 
-tsconfig.json: TypeScript setup.
+---
 
-tailwind.config.js: Tailwind CSS setup for NativeWind.
+## 🧬 State Management
 
-🛠️ Build & Runtime
-Expo Runtime bundles the JavaScript and handles hot reloading.
+- `store/index.ts`: Redux store config.
+- `savedMoviesSlice.ts`: Handles saving/removing movies.
 
-The Android directory is managed automatically by Expo for native builds.
+---
 
-Metro Bundler serves fonts, images, and code to the device.
+## 🔐 Secrets & Config
 
-🔍 How to Run the App
-bash
-Copy
-Edit
+- `.env`: Contains API key (`MOVIE_API_KEY=your_key_here`)
+- `metro.config.js`, `babel.config.js`: Dev configs.
+- `tailwind.config.js`: Tailwind/NativeWind setup.
+
+---
+
+## 🛠️ Build & Runtime
+
+- Expo handles native builds.
+- Metro Bundler serves assets and JS to the device.
+- Hot reloading via Expo dev server.
+
+---
+
+## 🔍 How to Run the App
+
+```bash
 # 1. Install dependencies
 npm install
 
 # 2. Add API key
-Create a `.env` file and add:
+# Create `.env` and add:
 MOVIE_API_KEY=your_key_here
 
-# 3. Start the Expo development server
+# 3. Start development server
 npx expo start
-🔄 Suggested Improvements
-Add authentication (e.g., Firebase Auth).
+```
 
-Add movie caching for offline support.
+---
 
-Add rating or review features.
+## 🔄 Suggested Improvements
 
-📌 Notes
-All native code is handled by Expo.
+- Add Firebase Auth
+- Add offline movie caching
+- Add ratings or reviews
 
-No backend server is included.
+---
 
-The app is fully cross-platform (Android + iOS).
+## 📌 Notes
+
+- Native code is fully managed by Expo.
+- No backend included — all logic is client-side.
+- Works on both Android and iOS.

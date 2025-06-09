@@ -2,6 +2,7 @@
 # 📱 Netflix Clone React Native App (Expo)
 
 A mobile app built with React Native and Expo to browse, search, and save movies using a third-party API.
+![diagram (8)](https://github.com/user-attachments/assets/d181d2c4-3a1c-42dd-a24e-06ad7334ef58)
 
 ---
 

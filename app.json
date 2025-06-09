@@ -3,47 +3,37 @@
     "name": "movie App",
     "slug": "reactNative_movieApp",
     "version": "1.0.0",
-   "orientation": "portrait",
-    "icon": "./assets/images/movie.svg",
- 
-
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
     "scheme": "Movie app",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-
     "ios": {
       "supportsTablet": true
     },
-
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/movie.svg"
-       
+        "foregroundImage": "./assets/images/logo.png"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.reactNative_movieApp"
     },
-
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/logo.png"
     },
-
-  "plugins": [
-  "expo-router",
-  [
-    "expo-splash-screen",
-    {
-      "image": "./assets/images/movie.jpg",
-        "width": 2000,
-      "height": 2000,
-      "resizeMode": "cover",
-      "backgroundColor": "#000000"
-    }
-  ]
-]
-,
-
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain"
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true
     }

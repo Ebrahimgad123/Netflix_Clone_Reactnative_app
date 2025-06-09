@@ -3,5 +3,6 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  "cmake.sourceDirectory": "C:/Users/DELL/OneDrive/Desktop/reactNative_movieApp/node_modules/expo-modules-core/android"
 }
